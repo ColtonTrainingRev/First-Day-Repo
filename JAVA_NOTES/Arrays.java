@@ -14,5 +14,25 @@ public class Arrays {
         for(int x = 0; x < evenNumbers.length; ++x){
             System.out.println(evenNumbers[x]);
         }
+
+        /*
+         * Arrays will work a little differently if you are not working with primitives: let's see what happens
+         * when we make an array of strings instead of numbers
+         */
+
+         String[] words = {"Apple", "Hello World", "Go Portland Trailblazers", "Revature", "Coffee"};
+
+         for(int x = 0; x < words.length; ++x){
+            System.out.println(words[x]);
+         }
+
+         String[] noWordsYet = new String[3];
+         String characters = "abcd";
+         for(int x = 0; x < noWordsYet.length; ++x){
+            noWordsYet[x] = characters;
+            characters += characters;
+         }
+         //Strings are IMMUTABLE objects
+         //characters += characters replaces the old string value with a new one.
     }    
 }
