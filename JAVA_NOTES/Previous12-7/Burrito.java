@@ -5,7 +5,7 @@ public class Burrito extends Food {
         super(name, taste, calorieCount, isCandy, isCooked, texture, smell);
     }
 
-    public Burrito() {
+    public Burrito() { 
     }
 
     @Override

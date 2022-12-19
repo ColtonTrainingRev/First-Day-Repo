@@ -1,0 +1,59 @@
+<!-- All your configurations for your loggers to go inside of the configuration tags -->
+<configuration>
+    <!--Appenders are how you tell logback where you want to send your logs -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <!--Encoders are how you tell logback how to format your logs -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <!--The file tags tells logback where we want our log file to be saved -->
+        <file>logs/staticlogs.log</file>
+        <!--The append tag tells Logback whether to append the file or create a new one each time the app starts-->
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/rollongFile.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--This sets the pattern for how to create the new log files-->
+            <fileNamePattern>logs/rollingLogFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--This determins how many days worth of logs should be saved-->
+            <maxHistory>7</maxHistory>
+            <!-- This determines how big of a log file we want before forcing a roll over -->
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <!--Root tells logback what your default log settings should be if you don't specify any -->
+    <root level="INFO">
+    <!-- You can set multiple append methods -->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLING"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
+
+<!--
+    Logging levels:
+    TRACE: This level gives all the nitty-gritty details of your application
+    DEBUG: Not as much detail as TRACE, but enough to do any debugging if necessary
+    INFO:  This gives general information about your application
+    WARN:  This level is used when the developer needs to be aware of something, that isn't necessarily catastrophic
+    EROOR: When something actually goes wrong, use the error level
+    NONE (this turns off logging)
+
+    When you set a level, you get all the information from that level and below
+    in descending order starting at TRACE all the way down to NONE.
+-->

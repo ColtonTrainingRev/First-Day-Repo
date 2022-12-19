@@ -73,7 +73,7 @@ public class App
             }
         });
 
-        app.put("/replac/{num}", ctx -> {
+        app.put("/replace/{num}", ctx -> {
             String numAsString = ctx.pathParam("num");
             //Since the value is a number, we convert the string into an int
             int num = Integer.parseInt((numAsString));

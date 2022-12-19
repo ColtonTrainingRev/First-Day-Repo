@@ -5,7 +5,7 @@ public abstract class Food {
      */
     public String name;
     public String taste;
-    public int calorieCount;
+    public int calorieCount; 
     public boolean isCandy;
     public boolean isCooked;
     public String texture;
@@ -27,9 +27,9 @@ public abstract class Food {
     public Food() {
     }
 
-    public static void main(String[] args){
-        //Food myFood = newFood(); this is not legal code, you will get a compilation error if you try this
-    }
+    // public static void main(String[] args){
+    //     //Food myFood = newFood(); this is not legal code, you will get a compilation error if you try this
+    // }
     public abstract void eat();
 
     public abstract void cook();
